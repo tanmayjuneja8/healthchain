@@ -36,7 +36,9 @@ const uploadMedicalRecord = async (contract, accounts, accountId, medicalRecordI
   }
   catch (error) {
     console.log(error) // Handle the error response object
+    // eslint-disable-next-line 
     return 'Please select a file to upload.'
+    // eslint-disable-next-line 
   };
 }
 

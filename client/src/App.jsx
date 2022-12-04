@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component} from "react";
 import PatientView from './components/PatientView'
 import DoctorView from './components/DoctorView'
 import HealthchainContract from "./contracts/Healthchain.json";
@@ -7,7 +7,8 @@ import "./App.css";
 import 'open-iconic/font/css/open-iconic-bootstrap.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import LogInOrRegister from "./components/LogInOrRegister";
-import { doctors, patients } from './helpers/users'
+import { doctors, patients } from './helpers/users';
+// import ENSAddress from '@ensdomains/react-ens-address';
 
 class App extends Component {
   state = {
@@ -18,6 +19,32 @@ class App extends Component {
     isDoctor: false,
     accountId: null
   };
+
+  // ENS Integration 
+
+//   AddressInput =()=> {
+//   const [resolved, setResolved] = useState({})
+//   const [type, setType] = useState(undefined)
+//   return (
+//     <>
+//       <ENSAddress
+//         provider={window.web3 || window.ethereum}
+//         onResolve={({ name, address, type }) => {
+//           if (type) {
+//             setResolved({
+//               value: address,
+//               type
+//             })
+//           }
+//         }}
+//       />
+//       {resolvedInput.type === 'address' &&
+//         `We found your reverse record ${resolved.value}`}
+//       {resolvedInput.type === 'name' &&
+//         `We found your address record ${resolved.value}`}
+//     </>
+//   )
+// }
 
   componentDidMount = async () => {
     try {
@@ -56,7 +83,7 @@ class App extends Component {
     document.addEventListener('logInSuccessful', updateLogInFromLocalStorage, false)
     updateLogInFromLocalStorage()
   };
-
+  
   render() {
 
     if (!this.state.web3) {
@@ -91,7 +118,7 @@ class App extends Component {
           <div className="card-header">
             <h1>
               <span className="header-icon oi oi-grid-three-up"></span>
-              HEALTHCHAIN
+              Heal.eth
             </h1>
             {this.state.user &&
               <h4>Logged in as {this.state.user}</h4>
