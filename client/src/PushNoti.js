@@ -1,13 +1,13 @@
- async function fetchNotifications(account) {
+ async function fetchPatientNotifications(account) {
     if (account) {
       // define the variables required to make a request
-      const walletAddress = account;
+      const patient_wallet = account;
       const pageNumber = 1;
       const itemsPerPage = 20;
 
       // fetch the notifications
       const { count, results } = await api.fetchNotifications(
-        walletAddress,
+        patient_wallet,
         itemsPerPage,
         pageNumber
       );
@@ -18,7 +18,7 @@
     }
   }
 
-  async function sendNotifications(data) {
+  async function sendDoctorNotifications(data) {
     try {
       const tx = await epnsSdk.sendNotification(
         data.to,
